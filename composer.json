@@ -15,7 +15,9 @@
         "php": "^7.0 || 8.0.* || 8.1.*",
         "illuminate/support": "^9.35",
         "illuminate/console": "^9.35",
-        "illuminate/filesystem": "^9.35"
+        "illuminate/filesystem": "^9.35",
+        "laravie-update/query-filter": "dev-master",
+        "orchestra-update/database": "dev-master"
 
     },
     "require-dev":{
