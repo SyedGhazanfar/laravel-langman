@@ -93,8 +93,8 @@ class FindCommand extends Command
                 $lines = $filesContent[$fileName][$languageKey] = Arr::dot($this->manager->getFileContent($filePath));
 
                 foreach ($lines as $key => $line) {
-                    if (! is_array($line) && stripos($line, $this->argument('keyword')) !== false) {
-                        $output[$fileName.'.'.$key][$languageKey] = "<bg=yellow;fg=black>{$line}</>";
+                    if (!is_array($line) && stripos($line, $this->argument('keyword')) !== false) {
+                        $output[$fileName . '.' . $key][$languageKey] = "<bg=yellow;fg=black>{$line}</>";
                     }
                 }
             }
@@ -109,10 +109,11 @@ class FindCommand extends Command
             $original = [];
 
             foreach ($allLanguages as $languageKey) {
-                $original[$languageKey] =
-                    isset($values[$languageKey])
-                        ? $values[$languageKey]
-                        : isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '';
+                $original[$languageKey] = '';
+                if (isset($values[$languageKey])) $original[$languageKey] = $values[$languageKey];
+                else {
+                    if (isset($filesContent[$fileName][$languageKey][$key])) $filesContent[$fileName][$languageKey][$key];
+                }
             }
 
             // Sort the language values based on language name
